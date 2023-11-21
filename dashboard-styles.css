@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+:root {
+  --poppins: "Poppins", sans-serif;
+  --lato: "Lato", sans-serif;
+
+  --light: #f9f9f9;
+  --blue: #3c91e6;
+  --light-blue: #cfe8ff;
+  --grey: #eee;
+  --dark-grey: #aaa;
+  --dark: #342e37;
+  --red: #db5048;
+  --yellow: #ffce26;
+  --light-yellow: #fff2c6;
+  --orange: #fd7238;
+  --light-orange: #ffe0d3;
+}
+
+body {
+  background: var(--grey);
+}
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28rem;
+  height: 10rem;
+  background: var(--light);
+  z-index: 99;
+  font-family: var(--lato);
+}
+
+#sidebar .brand {
+  display: flex;
+  align-items: center;
+  height: 5.6rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+#sidebar .brand .bx {
+  display: flex;
+  justify-content: center;
+  min-width: 6rem;
+}
+
+/* SIDEBAR */
