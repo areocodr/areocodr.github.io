@@ -137,3 +137,119 @@ body {
   min-width: calc(6rem - ((0.4rem + 0.6rem) * 2));
 }
 /* SIDEBAR */
+
+/* CONTENT */
+#content {
+  position: relative;
+  left: 28rem;
+  width: calc(100% - 28rem);
+}
+
+/* NAVBAR */
+#content nav {
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  position: relative;
+  grid-gap: 2.4rem;
+  height: 5.6rem;
+  padding: 0 2.4rem;
+  font-family: var(--lato);
+}
+
+#content nav::before {
+  content: "";
+  position: absolute;
+  bottom: -4rem;
+  left: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  box-shadow: -2rem -2rem 0 var(--light);
+}
+
+#content nav a {
+  color: var(--dark);
+}
+
+#content nav .bx.bx-menu {
+  cursor: pointer;
+}
+
+#content nav .nav-link {
+  font-size: 1.6rem;
+  transition: 0.3s ease;
+}
+
+#content nav .nav-link:hover {
+  color: var(--blue);
+}
+
+#content nav form {
+  max-width: 40rem;
+  width: 100%;
+  margin-right: auto;
+}
+
+#content nav form .form-input {
+  display: flex;
+  align-items: center;
+  height: 3.6rem;
+}
+
+#content nav form .form-input input {
+  background: var(--grey);
+  flex-grow: 1;
+  height: 100%;
+  padding: 0 1.6rem;
+  border: none;
+  outline: none;
+  border-radius: 3.6rem 0 0 3.6rem;
+}
+
+#content nav form .form-input button {
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 100%;
+  font-size: 1.8rem;
+  color: var(--light);
+  border: none;
+  outline: none;
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+}
+
+#content nav .notification {
+  font-size: 2rem;
+  position: relative;
+}
+
+#content nav .notification .num {
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--light);
+  color: var(--light);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+#content nav .profile img {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* NAVBAR */
+
+/* CONTENT */
