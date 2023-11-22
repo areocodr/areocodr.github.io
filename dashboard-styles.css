@@ -28,7 +28,7 @@ li {
   --grey: #eee;
   --dark-grey: #aaa;
   --dark: #342e37;
-  --red: #db5048;
+  --red: #db504a;
   --yellow: #ffce26;
   --light-yellow: #fff2c6;
   --orange: #fd7238;
@@ -45,9 +45,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 999;
   width: 28rem;
-  height: 10rem;
+  height: 100%;
   font-family: var(--lato);
 }
 
@@ -82,19 +82,34 @@ body {
 #sidebar .side-menu li.active {
   background: var(--grey);
   position: relative;
-  z-index: 10;
+}
+
+#sidebar .side-menu li.active a {
+  color: var(--blue);
 }
 
 #sidebar .side-menu li.active::before {
   content: "";
   position: absolute;
-  top: -4.8rem;
+  top: -4rem;
   right: 0;
   z-index: -1;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
   box-shadow: 20px 20px 0 var(--grey);
+}
+
+#sidebar .side-menu li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4rem;
+  right: 0;
+  z-index: -1;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  box-shadow: 20px -20px 0 var(--grey);
 }
 
 #sidebar .side-menu li a {
@@ -106,6 +121,10 @@ body {
   font-size: 1.6rem;
   color: var(--dark);
   border-radius: 4.8rem;
+}
+
+#sidebar .side-menu li a.logout {
+  color: var(--red);
 }
 
 #sidebar .side-menu.top li a:hover {
