@@ -49,6 +49,13 @@ body {
   width: 28rem;
   height: 100%;
   font-family: var(--lato);
+
+  transition: 0.3s ease;
+  overflow-x: hidden;
+}
+
+#sidebar.hide {
+  width: 6rem;
 }
 
 #sidebar .brand {
@@ -121,6 +128,17 @@ body {
   font-size: 1.6rem;
   color: var(--dark);
   border-radius: 4.8rem;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+#sidebar.hide .side-menu li.active a {
+  color: var(--blue);
+}
+
+#sidebar.hide .side-menu li a {
+  width: calc(4.8rem - (0.4rem * 2));
+  transition: width 0.3s ease;
 }
 
 #sidebar .side-menu li a.logout {
@@ -142,7 +160,13 @@ body {
 #content {
   position: relative;
   left: 28rem;
+  transition: 0.3s ease;
   width: calc(100% - 28rem);
+}
+
+#sidebar.hide ~ #content {
+  width: calc(100% - 6rem);
+  left: 6rem;
 }
 
 /* NAVBAR */
@@ -252,4 +276,88 @@ body {
 }
 /* NAVBAR */
 
+/* MAIN */
+#content main {
+  width: 100%;
+  padding: 3.6rem 2.4rem;
+  font-family: var(--poppins);
+}
+
+#content main .head-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 16px;
+  flex-wrap: wrap;
+}
+
+#content main .head-title .left h1 {
+  margin-bottom: 1rem;
+  font-size: 3.6rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+#content main .head-title .left .breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 1.6rem;
+}
+#content main .head-title .left .breadcrumb li {
+  color: var(--dark);
+}
+#content main .head-title .left .breadcrumb li a {
+  color: var(--dark-grey);
+  pointer-events: none;
+}
+
+#content main .head-title .left .breadcrumb li a.active {
+  color: var(--blue);
+  pointer-events: unset;
+}
+
+/* MAIN */
+
 /* CONTENT */
+
+@media screen and (max-width: 768px) {
+  #content {
+    width: calc(100% - 6rem);
+  }
+  #content nav .nav-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #content nav form .form-input input {
+    display: none;
+    width: 100%;
+  }
+  #content nav form .form-input button {
+    width: auto;
+    height: auto;
+    background: transparent;
+    border-radius: none;
+    color: var(--dark);
+  }
+
+  #content nav form.show .form-input input {
+    display: block;
+    width: 100%;
+  }
+
+  #content nav form.show .form-input button {
+    width: 3.6rem;
+    height: 100%;
+    border-radius: 0 36px 36px 0;
+    color: var(--light);
+    background: var(--red);
+  }
+
+  #content nav form.show ~ .notification,
+  #content nav form.show ~ .profile {
+    display: none;
+  }
+}
