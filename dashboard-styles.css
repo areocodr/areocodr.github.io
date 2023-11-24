@@ -332,7 +332,7 @@ body {
 
 #content main .box-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 2.4rem;
   margin-top: 3.6rem;
 }
@@ -343,6 +343,29 @@ body {
   align-items: center;
   gap: 2.4rem;
   padding: 2.4rem;
+  border-radius: 2rem;
+}
+
+#content main .box-info li .bx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
+  font-size: 3.6rem;
+}
+#content main .box-info li:nth-child(1) .bx {
+  background: var(--light-blue);
+  color: var(--blue);
+}
+#content main .box-info li:nth-child(2) .bx {
+  background: var(--light-yellow);
+  color: var(--yellow);
+}
+#content main .box-info li:nth-child(3) .bx {
+  background: var(--light-orange);
+  color: var(--orange);
 }
 
 /* MAIN */
