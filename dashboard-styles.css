@@ -382,8 +382,13 @@ body {
   border-radius: 2rem;
 }
 
+#content main .table-data .head {
+  display: flex;
+  align-items: center;
+}
+
 #content main .table-data .order {
-  flex: 0 1 52rem;
+  flex: 0 1 50rem;
 }
 
 #content main .table-data .order table {
@@ -391,7 +396,7 @@ body {
 }
 
 #content main .table-data .todo {
-  flex: 0 1 20rem;
+  flex: 0 1 30rem;
 }
 
 /* MAIN */
