@@ -405,7 +405,6 @@ body {
   align-items: center;
   gap: 1.6rem;
   margin-bottom: 2.4rem;
-  min-width: 42rem;
 }
 
 #content main .table-data .head h3 {
@@ -425,7 +424,6 @@ body {
 #content main .table-data .order table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 42rem;
 }
 
 #content main .table-data .order table th {
@@ -480,7 +478,6 @@ body {
 
 #content main .table-data .todo .todo-list {
   width: 100%;
-  min-width: 42rem;
 }
 
 #content main .table-data .todo .todo-list li {
@@ -559,7 +556,17 @@ body {
   #content main .box-info {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.4rem;
-    margin-top: 3.6rem;
+  }
+
+  #content main .table-data .head {
+    min-width: 42rem;
+  }
+
+  #content main .table-data .order table {
+    min-width: 42rem;
+  }
+
+  #content main .table-data .todo .todo-list {
+    min-width: 42rem;
   }
 }
