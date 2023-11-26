@@ -368,12 +368,18 @@ body {
   color: var(--orange);
 }
 
+#content main .box-info li .text {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
 #content main .table-data {
   display: flex;
   flex-wrap: wrap;
   gap: 2.4rem;
   width: 100%;
   margin-top: 2.4rem;
+  color: var(--dark);
 }
 
 #content main .table-data > div {
@@ -385,6 +391,14 @@ body {
 #content main .table-data .head {
   display: flex;
   align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+#content main .table-data .head h3 {
+  margin-right: auto;
+  font-size: 2.4rem;
+  font-weight: 600;
 }
 
 #content main .table-data .order {
@@ -393,6 +407,17 @@ body {
 
 #content main .table-data .order table {
   width: 100%;
+  border-collapse: collapse;
+}
+
+#content main .table-data .order table th {
+  padding-bottom: 1.2rem;
+  font-size: 1.4rem;
+  text-align: left;
+  border-bottom: 1px solid var(--grey);
+}
+
+#content main .table-data .order table td {
 }
 
 #content main .table-data .todo {
