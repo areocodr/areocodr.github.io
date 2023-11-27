@@ -22,17 +22,20 @@ li {
   --poppins: "Poppins", sans-serif;
   --lato: "Lato", sans-serif;
 
+  --white: #fff;
   --light: #f9f9f9;
   --blue: #3c91e6;
   --light-blue: #cfe8ff;
   --grey: #eee;
-  --dark-grey: #aaa;
-  --dark: #342e37;
+  --dark-grey: #9d9d9d;
+  --dark: #05081e;
   --red: #db504a;
   --yellow: #ffce26;
   --light-yellow: #fff2c6;
   --orange: #fd7238;
   --light-orange: #ffe0d3;
+  --violet: #9ea2ff;
+  --green: #9cffc4;
 }
 
 html {
