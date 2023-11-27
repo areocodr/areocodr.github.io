@@ -1,4 +1,24 @@
-body{
+:root {
+  --poppins: "Poppins", sans-serif;
+  --lato: "Lato", sans-serif;
+
+  --white: #fff;
+  --light: #f9f9f9;
+  --blue: #3c91e6;
+  --light-blue: #cfe8ff;
+  --grey: #eee;
+  --dark-grey: #9d9d9d;
+  --dark: #05081e;
+  --red: #db504a;
+  --yellow: #ffce26;
+  --light-yellow: #fff2c6;
+  --orange: #fd7238;
+  --light-orange: #ffe0d3;
+  --violet: #9ea2ff;
+  --green: #9cffc4;
+}
+
+body {
   margin-inline: auto;
   background-image: url(img/background.svg);
   background-repeat: no-repeat;
@@ -9,7 +29,7 @@ body{
 table {
   width: 80%;
   margin: 40px auto;
-  background: rgb(124, 154, 167);
+  background: var(--green);
 }
 
 table.list {
@@ -18,26 +38,30 @@ table.list {
 }
 
 td {
-  border: 1px solid rgb(204,200,200);
+  border: 1px solid rgb(204, 200, 200);
   text-align: left;
   padding: 8px 15px;
 }
 
-tr:nth-child(even), table.list thead> tr {
-  background-color: rgb(204,200,200);
+tr:nth-child(even),
+table.list thead > tr {
+  background-color: rgb(204, 200, 200);
 }
 
-input[type="text"], input[type="number"]{
+input[type="text"],
+input[type="date"],
+select,
+input[type="number"] {
   width: 91%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid rgb(165, 161, 161);
   border-radius: 4px;
-
 }
 
-input[type="submit"], input[type="reset"]{
+input[type="submit"],
+input[type="reset"] {
   background: #eee;
   padding: 6px 12px;
   margin: 15px 0;
