@@ -20,10 +20,11 @@
 
 body {
   margin-inline: auto;
-  background-image: url(img/background.svg);
+  /* background-image: url(img/background.svg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover; */
+  background: var(--dark-grey);
 }
 
 table {

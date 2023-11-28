@@ -1,4 +1,4 @@
-var selectedRow = null;
+/* var selectedRow = null;
 function onFormSubmit(e) {
   event.preventDefault();
   var formData = readFormData();
@@ -74,12 +74,9 @@ function resetForm() {
 const students = [];
 
 function addStudent() {
-  const name =
-    document.getElementById("firstName").value +
-    " " +
-    document.getElementById("otherNames").value +
-    " " +
-    document.getElementById("surName").value;
+  const firstName =
+    document.getElementById("firstName").value;
+  const surname = document.getElementById("surName").value;
   const course = document.getElementById("course").value;
   const faculty = document.getElementById("faculty").value;
   const gender = document.getElementById("gender").value;
@@ -89,7 +86,8 @@ function addStudent() {
   const state = document.getElementById("state").value;
 
   const student = {
-    name,
+    firstName,
+    surname
     course,
     faculty,
     gender,
@@ -109,7 +107,7 @@ function displayStudents() {
   const table = document.getElementById("studentTable");
   // Clear existing rows
   table.innerHTML =
-    "<tr><th>Name</th><th>Course</th><th>Faculty</th><th>Gender</th><th>Home Address</th><th>Religion</th><th>Date of Birth</th><th>State of Origin</th><th>Action</th></tr>";
+    "<tr><th>First Name</th><th>Surname</th><th>Course</th><th>Faculty</th><th>Gender</th><th>Home Address</th><th>Religion</th><th>Date of Birth</th><th>State of Origin</th><th>Action</th></tr>";
 
   // Add new rows
   students.forEach((student, index) => {
@@ -144,3 +142,134 @@ function clearForm() {
 function generateId() {
   return Maath.floor(Math.random() * 100);
 }
+ */
+
+let students = [];
+
+function addStudents(student) {
+  let table = $("#studentTable tbody");
+  table.append(`
+   <tr id="${student.id}">
+        <td>${student.firstName}</td>
+        <td>${student.surname}</td>
+        <td>${student.course}</td>
+        <td>${student.faculty}</td>
+        <td>${student.gender}</td>
+        <td>${student.address}</td>
+        <td>${student.religion}</td>
+        <td>${student.dob}</td>
+        <td>${student.state}</td>
+        <td>
+          <button class="mb-1 btn btn-sm btn-warning editBtn" data-id="${student.id}">Edit</button>
+  
+          <button class="mb-1 btn btn-sm btn-danger deleteBtn" data-id="${student.id}">Delete</button>
+        </td>
+   </tr>`);
+}
+
+function clearForm() {
+  $("#firstName").val("");
+  $("#surname").val("");
+  $("#course").val("");
+  $("#faculty").val("");
+  $("#gender").val("");
+  $("#address").val("");
+  $("#religion").val("");
+  $("#dob").val("");
+  $("#state").val("");
+}
+
+function generateId() {
+  return Math.floor(Math.random() * 100000);
+}
+
+$(document).on("click", "#clearBtn", function () {
+  clearForm();
+});
+
+$("#studentForm").submit(function (e) {
+  e.preventDefault();
+
+  let student = {
+    id: generateId(),
+    firstName: $("#firstName").val(),
+    surname: $("#surname").val(),
+    course: $("#course").val(),
+    faculty: $("#faculty").val(),
+    gender: $("#gender").val(),
+    address: $("#address").val(),
+    religion: $("#religion").val(),
+    state: $("#state").val(),
+    dob: $("#dob").val(),
+  };
+
+  // Validate date of birth
+  if (isFutureDate(student.dob)) {
+    alert("Date of birth cannot be a future date.");
+    return;
+  }
+
+  students.push(student);
+  addStudents(student);
+
+  clearForm();
+});
+
+function isFutureDate(dateString) {
+  const currentDate = new Date();
+  const inputDate = new Date(dateString);
+
+  return inputDate > currentDate;
+}
+
+$("#editForm").submit(function (e) {
+  e.preventDefault();
+
+  let studentId = $("#editStudentId").val();
+  let studentIndex = students.findIndex((student) => student.id == studentId);
+  let student = students[studentIndex];
+
+  student.firstName = $("editfirstName").val();
+  (student.surname = $("#editsurname").val()),
+    (student.course = $("#editcourse").val()),
+    (student.faculty = $("#editfaculty").val()),
+    (student.gender = $("#editgender").val()),
+    (student.address = $("#editaddress").val()),
+    (student.religion = $("#editreligion").val()),
+    (student.state = $("#editstate").val()),
+    (student.dob = $("#editdob").val());
+
+  let row = $(`#${student.id}`);
+  row.find("td:eq(0)").text(student.firstName);
+  row.find("td:eq(1)").text(student.surname);
+  row.find("td:eq(2)").text(student.course);
+  row.find("td:eq(3)").text(student.faculty);
+  row.find("td:eq(4)").text(student.gender);
+  row.find("td:eq(5)").text(student.address);
+  row.find("td:eq(6)").text(student.religion);
+  row.find("td:eq(7)").text(student.dob);
+  row.find("td:eq(8)").text(student.state);
+
+  $("editModal").modal("hide");
+});
+
+$(document).on("click", ".editBtn", function () {
+  let studentId = $(this).data("id");
+
+  let studentIndex = students.findIndex((student) => student.id == studentId);
+
+  let student = students[studentIndex];
+
+  $("editfirstName").val(student.firstName);
+  $("#editsurname").val(student.surname);
+  $("#editcourse").val(student.course);
+  $("#editfaculty").val(student.faculty);
+  $("#editgender").val(student.gender);
+  $("#editaddress").val(student.address);
+  $("#editreligion").val(student.religion);
+  $("#editstate").val(student.state);
+  $("#editdob").val(student.dob);
+  $("#editStudentId").val(student.id);
+
+  $("editModal").modal("show");
+});
