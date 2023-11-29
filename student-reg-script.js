@@ -63,7 +63,7 @@ let students = [];
 function addStudents(student) {
   let table = $("#studentTable tbody");
   table.append(`
-   <tr id="${student.id}">
+   <tr id="${student.id} class="${student.isBlacklisted ? "blacklisted" : ""}"">
         <td>${student.id}</td>
         <td>${student.firstName}</td>
         <td>${student.surname}</td>
@@ -76,9 +76,15 @@ function addStudents(student) {
         <td>${student.state}</td>
         <td>${student.imagePreview}</td>
         <td>
-          <button class="mb-1 btn btn-sm btn-warning editBtn" data-id="${student.id}">Edit</button>
-  
-          <button class="mb-1 btn btn-sm btn-danger deleteBtn" data-id="${student.id}">Delete</button>
+          <button class="mb-1 btn btn-sm btn-warning editBtn" data-id="${
+            student.id
+          }">Edit</button>
+          <button class="mb-1 btn btn-sm btn-danger deleteBtn" data-id="${
+            student.id
+          }">Delete</button>
+          <button class="mb-1 btn btn-sm btn-secondary toggleBlacklistBtn" data-id="${
+            student.id
+          }">${student.isBlacklisted ? "Unblacklist" : "Blacklist"}</button>
         </td>
    </tr>`);
 }
@@ -144,6 +150,17 @@ function isFutureDate(dateString) {
 
   return inputDate > currentDate;
 }
+
+$(document).on("click", ".toggleBlacklistBtn", function () {
+  let studentId = $(this).data("id");
+  let studentIndex = students.findIndex((student) => student.id == studentId);
+  let student = students[studentIndex];
+
+  student.isBlacklisted = !student.isBlacklisted;
+  $("#studentTable")
+    .find(`[data-id="${studentId}"]`)
+    .toggleClass("blacklisted", student.isBlacklisted);
+});
 
 $("#editForm").submit(function (e) {
   e.preventDefault();

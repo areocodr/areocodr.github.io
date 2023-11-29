@@ -77,13 +77,24 @@
       <nav>
         <i class="bx bx-menu"></i>
         <a href="#" class="nav-link">Categories</a>
-        <form action="#">
+        <form id="searchForm">
           <div class="form-input">
-            <input type="search" name="" id="" placeholder="Search..." />
-            <button type="submit" class="search-btn">
+            <input type="search" name="" id="searchInput" placeholder="Search..." />
+            <button type="button" class="search-btn" onclick="searchStudents()">
               <i class="bx bx-search"></i>
             </button>
           </div>
+
+          <div class="form-input">
+            <label for="filterGender">Gender:</label>
+            <select id="filterGender" class="form-control">
+              <option value="">-- All --</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Others</option>
+            </select>
+          </div>
+
         </form>
         <a href="#" class="notification">
           <i class="bx bxs-bell"></i>
