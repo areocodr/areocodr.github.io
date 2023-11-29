@@ -46,15 +46,6 @@ body {
   background: var(--grey);
   overflow-x: hidden;
 }
-/* body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-image: url('your-image-url.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
 
 /* SIDEBAR */
 #sidebar {
