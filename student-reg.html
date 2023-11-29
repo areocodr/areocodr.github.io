@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="language" content="English" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Boxicions -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="student-reg.css" />
+
+    <title>Student Registration | My Students Record</title>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+      <a href="#" class="brand">
+        <i class="bx bx-book-open"></i>
+        <span class="text">AdminPortal</span>
+      </a>
+
+      <ul class="side-menu top">
+        <li class="active">
+          <a href="dashboard.html">
+            <i class="bx bxs-dashboard"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="student-reg.html">
+            <i class="bx bxs-store"></i>
+            <span class="text">Student Registration</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-group"></i>
+            <span class="text">Students</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-doughnut-chart"></i>
+            <span class="text">Analytics</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="side-menu">
+        <li>
+          <a href="#">
+            <i class="bx bxs-cog"></i>
+            <span class="text">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="logout">
+            <i class="bx bxs-log-out-circle"></i>
+            <span class="text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" name="" id="" placeholder="Search..." />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <a href="#" class="notification">
+          <i class="bx bxs-bell"></i>
+          <span class="num">8</span>
+        </a>
+        <a href="#" class="profile">
+          <img src="/img/people.png" alt="" />
+        </a>
+      </nav>
+      <!-- NAVBAR -->
+
+      <!-- MAIN -->
+      <main class="hidden">
+        <div class="head-title">
+          <div class="left">
+            <div aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Student Registration
+                </li>
+              </ol>
+            </di>
+          </div>
+          <a href="#" class="btn-download d-none">
+            <i class="bx bxs-cloud-download"></i>
+            <span class="text">Download PDF</span>
+          </a>
+        </div>
+
+        <div class="container mt-5">
+          <h2 class="text-left mb-5">Student Registration</h2>
+          <div class="row-cols-2">
+            <form action="" id="studentForm">
+              <div class="form-group mb-3">
+                <label for="firstName">First Name:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="firstName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="surname">Surname:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="surname"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="course">Course:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="course"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="faculty">Faculty:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="faculty"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="gender">Gender:</label>
+                <div>
+                  <select id="gender" class="form-control" required>
+                    <option value="">--Please specify--</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Others</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="address">Home Address:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="address"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="religion">Religion:</label>
+                <div>
+                  <input
+                    type="text"
+                    id="religion"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="dob">Date of Birth:</label>
+                <div>
+                  <input type="date" id="dob" class="form-control" required />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="state">State of Origin:</label>
+                <div>
+                  <select id="state" class="form-control" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="Abia">Abia</option>
+                    <option value="Adamawa">Adamawa</option>
+                    <option value="Akwa Ibom">Akwa Ibom</option>
+                    <option value="Anambra">Anambra</option>
+                    <option value="Bauchi">Bauchi</option>
+                    <option value="Bayelsa">Bayelsa</option>
+                    <option value="Benue">Benue</option>
+                    <option value="Borno">Borno</option>
+                    <option value="Cross River">Cross River</option>
+                    <option value="Delta">Delta</option>
+                    <option value="Ebonyi">Ebonyi</option>
+                    <option value="Edo">Edo</option>
+                    <option value="Ekiti">Ekiti</option>
+                    <option value="Enugu">Enugu</option>
+                    <option value="Gombe">Gombe</option>
+                    <option value="Imo">Imo</option>
+                    <option value="Jigawa">Jigawa</option>
+                    <option value="Kaduna">Kaduna</option>
+                    <option value="Kano">Kano</option>
+                    <option value="Katsina">Katsina</option>
+                    <option value="Kebbi">Kebbi</option>
+                    <option value="Kogi">Kogi</option>
+                    <option value="Kwara">Kwara</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Nasarawa">Nasarawa</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Ogun">Ogun</option>
+                    <option value="Ondo">Ondo</option>
+                    <option value="Osun">Osun</option>
+                    <option value="Oyo">Oyo</option>
+                    <option value="Plateau">Plateau</option>
+                    <option value="Rivers">Rivers</option>
+                    <option value="Sokoto">Sokoto</option>
+                    <option value="Taraba">Taraba</option>
+                    <option value="Yobe">Yobe</option>
+                    <option value="Zamfara">Zamfara</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="">
+                  <button class="js-btn btn-dark">Upload Picture</button>
+                </div>
+
+                <div class="webcam_modal">
+                  <div class="modal_content">
+                    <span class="close">&times;</span>
+                    <div class="">
+                      <video
+                        id="webcam"
+                        width="320"
+                        height="240"
+                        autoplay
+                      ></video>
+                      <button id="snap" class="btn btn-light">
+                        Capture Image
+                      </button>
+                      <canvas id="canvas" width="320" height="240"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button id="addBtn" class="btn btn-success" type="submit">
+                Add Student
+              </button>
+              <button id="clearBtn" class="btn btn-warning" type="button">
+                Clear All
+              </button>
+            </form>
+          </div>
+
+          <table class="table mt-4 list" id="studentTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Course</th>
+                <th>Faculty</th>
+                <th>Gender</th>
+                <th>Home Address</th>
+                <th>Religion</th>
+                <th>Date of Birth</th>
+                <th>State of Origin</th>
+                <th>Profile pic</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="modal fade" id="editModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Student</h4>
+              </div>
+              <div class="modal-body">
+                <form action="" id="editForm">
+                  <div class="form-group mb-3">
+                    <label for="editfirstName">First Name:</label>
+                    <input type="text" id="editfirstName" required />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editsurname">Surname:</label>
+                    <input type="text" id="editsurname" required />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editcourse">Course:</label>
+                    <input
+                      type="text"
+                      id="editcourse"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editfaculty">Faculty:</label>
+                    <input
+                      type="text"
+                      id="editfaculty"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editgender">Gender:</label>
+                    <select id="editgender" class="form-control" required>
+                      <option value="">--Please specify--</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Others</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editaddress">Home Address:</label>
+                    <input
+                      type="text"
+                      id="editaddress"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editreligion">Religion:</label>
+                    <input
+                      type="text"
+                      id="editreligion"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editdob">Date of Birth:</label>
+                    <input
+                      type="date"
+                      id="editdob"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="editstate">State of Origin:</label>
+                    <select id="editstate" class="form-control" required>
+                      <option value="" disabled selected>Select State</option>
+                      <option value="Abia">Abia</option>
+                      <option value="Adamawa">Adamawa</option>
+                      <option value="Akwa Ibom">Akwa Ibom</option>
+                      <option value="Anambra">Anambra</option>
+                      <option value="Bauchi">Bauchi</option>
+                      <option value="Bayelsa">Bayelsa</option>
+                      <option value="Benue">Benue</option>
+                      <option value="Borno">Borno</option>
+                      <option value="Cross River">Cross River</option>
+                      <option value="Delta">Delta</option>
+                      <option value="Ebonyi">Ebonyi</option>
+                      <option value="Edo">Edo</option>
+                      <option value="Ekiti">Ekiti</option>
+                      <option value="Enugu">Enugu</option>
+                      <option value="Gombe">Gombe</option>
+                      <option value="Imo">Imo</option>
+                      <option value="Jigawa">Jigawa</option>
+                      <option value="Kaduna">Kaduna</option>
+                      <option value="Kano">Kano</option>
+                      <option value="Katsina">Katsina</option>
+                      <option value="Kebbi">Kebbi</option>
+                      <option value="Kogi">Kogi</option>
+                      <option value="Kwara">Kwara</option>
+                      <option value="Lagos">Lagos</option>
+                      <option value="Nasarawa">Nasarawa</option>
+                      <option value="Niger">Niger</option>
+                      <option value="Ogun">Ogun</option>
+                      <option value="Ondo">Ondo</option>
+                      <option value="Osun">Osun</option>
+                      <option value="Oyo">Oyo</option>
+                      <option value="Plateau">Plateau</option>
+                      <option value="Rivers">Rivers</option>
+                      <option value="Sokoto">Sokoto</option>
+                      <option value="Taraba">Taraba</option>
+                      <option value="Yobe">Yobe</option>
+                      <option value="Zamfara">Zamfara</option>
+                    </select>
+                  </div>
+
+                  <input type="hidden" id="editStudentId" />
+                  <button
+                    id="editBtn"
+                    class="btn btn-success editBtn"
+                    type="submit"
+                  >
+                    Save Changes
+                  </button>
+                  <button
+                    id="clsBtn"
+                    class="btn btn-danger ml-2"
+                    type="button"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/dashboard-script.js"></script>
+  </body>
+</html>
