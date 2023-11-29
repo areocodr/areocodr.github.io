@@ -96,24 +96,179 @@
       <!-- NAVBAR -->
 
       <!-- MAIN -->
-      <main class="hidden">
-        <div class="head-title">
-          <div class="left">
-            <div aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Students
-                </li>
-              </ol>
-            </di>
-          </div>
-          <a href="#" class="btn-download d-none">
-            <i class="bx bxs-cloud-download"></i>
-            <span class="text">Download PDF</span>
-          </a>
-        </div>
+<main class="hidden">
+  <div class="head-title">
+    <div class="left">
+      <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Students
+          </li>
+        </ol>
+      </div>
+    </div>
+    <a href="#" class="btn-download d-none">
+      <i class="bx bxs-cloud-download"></i>
+      <span class="text">Download PDF</span>
+    </a>
+  </div>
 
+  <table class="table mt-4 list" id="dataTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>Course</th>
+        <th>Faculty</th>
+        <th>Gender</th>
+        <th>Home Address</th>
+        <th>Religion</th>
+        <th>Date of Birth</th>
+        <th>State of Origin</th>
+        <th>Profile pic</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</main>
+<!-- MAIN -->
+      <div class="modal fade" id="editModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Student</h4>
+            </div>
+            <div class="modal-body">
+              <form action="" id="editForm">
+                <div class="form-group mb-3">
+                  <label for="editfirstName">First Name:</label>
+                  <input type="text" id="editfirstName" class="form-control" required />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editsurname">Surname:</label>
+                  <input type="text" id="editsurname" class="form-control" required />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editcourse">Course:</label>
+                  <input
+                    type="text"
+                    id="editcourse"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editfaculty">Faculty:</label>
+                  <input
+                    type="text"
+                    id="editfaculty"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editgender">Gender:</label>
+                  <select id="editgender" class="form-control" required>
+                    <option value="">--Please specify--</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Others</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editaddress">Home Address:</label>
+                  <input
+                    type="text"
+                    id="editaddress"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editreligion">Religion:</label>
+                  <input
+                    type="text"
+                    id="editreligion"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editdob">Date of Birth:</label>
+                  <input
+                    type="date"
+                    id="editdob"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="editstate">State of Origin:</label>
+                  <select id="editstate" class="form-control" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="Abia">Abia</option>
+                    <option value="Adamawa">Adamawa</option>
+                    <option value="Akwa Ibom">Akwa Ibom</option>
+                    <option value="Anambra">Anambra</option>
+                    <option value="Bauchi">Bauchi</option>
+                    <option value="Bayelsa">Bayelsa</option>
+                    <option value="Benue">Benue</option>
+                    <option value="Borno">Borno</option>
+                    <option value="Cross River">Cross River</option>
+                    <option value="Delta">Delta</option>
+                    <option value="Ebonyi">Ebonyi</option>
+                    <option value="Edo">Edo</option>
+                    <option value="Ekiti">Ekiti</option>
+                    <option value="Enugu">Enugu</option>
+                    <option value="Gombe">Gombe</option>
+                    <option value="Imo">Imo</option>
+                    <option value="Jigawa">Jigawa</option>
+                    <option value="Kaduna">Kaduna</option>
+                    <option value="Kano">Kano</option>
+                    <option value="Katsina">Katsina</option>
+                    <option value="Kebbi">Kebbi</option>
+                    <option value="Kogi">Kogi</option>
+                    <option value="Kwara">Kwara</option>
+                    <option value="Lagos">Lagos</option>
+                    <option value="Nasarawa">Nasarawa</option>
+                    <option value="Niger">Niger</option>
+                    <option value="Ogun">Ogun</option>
+                    <option value="Ondo">Ondo</option>
+                    <option value="Osun">Osun</option>
+                    <option value="Oyo">Oyo</option>
+                    <option value="Plateau">Plateau</option>
+                    <option value="Rivers">Rivers</option>
+                    <option value="Sokoto">Sokoto</option>
+                    <option value="Taraba">Taraba</option>
+                    <option value="Yobe">Yobe</option>
+                    <option value="Zamfara">Zamfara</option>
+                  </select>
+                </div>
+
+                <input type="hidden" id="editStudentId" />
+                <button
+                  id="editBtn"
+                  class="btn btn-success editBtn"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+                <button
+                  id="clsBtn"
+                  class="btn btn-danger ml-2"
+                  type="button"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
       </main>
       <!-- MAIN -->
@@ -131,6 +286,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="/student-reg-script.js"></script>
     <script src="/students.js"></script>
   </body>
 </html>

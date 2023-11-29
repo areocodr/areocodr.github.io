@@ -1,3 +1,63 @@
+function updateReviewModal() {
+  const firstName = $("#firstName").val();
+  const surname = $("#surname").val();
+  const course = $("#course").val();
+  const faculty = $("#faculty").val();
+  const gender = $("#gender").val();
+  const address = $("#address").val();
+  const religion = $("#religion").val();
+  const state = $("#state").val();
+  const dob = $("#dob").val();
+
+  const reviewContent = `
+  <p><strong>First Name:</strong> ${firstName}</p>
+  <p><strong>Surname:</strong> ${surname}</p>
+  <p><strong>Course:</strong> ${course}</p>
+  <p><strong>Faculty:</strong> ${faculty}</p>
+  <p><strong>Gender:</strong> ${gender}</p>
+  <p><strong>Address:</strong> ${address}</p>
+  <p><strong>Religion:</strong> ${religion}</p>
+  <p><strong>State:</strong> ${state}</p>
+  <p><strong>Date of Birth:</strong> ${dob}</p>
+  `;
+
+  $("#reviewModalBody").html(reviewContent);
+}
+
+$("#addBtn").click(function () {
+  updateReviewModal();
+});
+
+$("#confirmBtn").click(function () {
+  $("#studentForm").submit();
+});
+
+$("#clearBtn").click(function () {
+  clearForm();
+});
+
+$(document).ready(function () {
+  $("#confirmBtn").on("click", function () {
+    let formData = {
+      id: generateId(),
+      firstName: $("#firstName").val(),
+      surname: $("#surname").val(),
+      course: $("#course").val(),
+      faculty: $("#faculty").val(),
+      gender: $("#gender").val(),
+      address: $("#address").val(),
+      religion: $("#religion").val(),
+      state: $("#state").val(),
+      dob: $("#dob").val(),
+    };
+
+    let storedForms = JSON.parse(localStorage.getItem("formData")) || [];
+    storedForms.push(formData);
+
+    localStorage.setItem("formData", JSON.stringify(storedForms));
+  });
+});
+
 let students = [];
 
 function addStudents(student) {
@@ -63,6 +123,12 @@ $("#studentForm").submit(function (e) {
   // Validate date of birth
   if (isFutureDate(student.dob)) {
     alert("Date of birth cannot be a future date.");
+    return;
+  }
+
+  // Check if student with same ID exists
+  if (students.some((s) => s.id === student.id)) {
+    alert("Student with the same ID already exists.");
     return;
   }
 
@@ -133,14 +199,14 @@ $(document).on("click", ".editBtn", function () {
   $("#editModal").modal("show");
 });
 
-$("#deleteBtn").on("click", function () {
-  // Assuming your table has an ID of "studentsTable"
-  // Remove the row from the table
-  $("#studentsTable").find(`[data-id="${student.id}"]`).closest("tr").remove();
+$(document).on("click", ".deleteBtn", function () {
+  let studentId = $(this).data("id");
 
-  // Remove the student from the array
+  let studentIndex = students.findIndex((student) => student.id == studentId);
+
+  $("#studentTable").find(`[data-id="${studentId}"]`).closest("tr").remove();
+
   students.splice(studentIndex, 1);
 
-  // Close the modal
   $("#editModal").modal("hide");
 });

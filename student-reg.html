@@ -114,8 +114,28 @@
           </a>
         </div>
 
+        
         <div class="container mt-5">
           <h2 class="text-left mb-5">Student Registration</h2>
+         
+          <div class="modal fade" id="reviewModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Review Information</h4>
+                </div>
+                <div class="modal-body" id="reviewModalBody">
+                  <p>
+                    Confirm details:
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button>
+                  <button type="button" class="btn btn-primary" id="confirmBtn">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row-cols-2">
             <form action="" id="studentForm">
               <div class="form-group mb-3">
@@ -269,12 +289,11 @@
                   </div>
                 </div>
               </div>
-              <button id="addBtn" class="btn btn-success" type="submit">
-                Add Student
+
+              <button id="addBtn" class="btn btn-success" type="button" data-toggle="modal" data-target="#reviewModal">
+                Review and Confirm
               </button>
-              <button id="clearBtn" class="btn btn-warning" type="button">
-                Clear All
-              </button>
+              <button id="clearBtn" class="btn btn-warning" type="button">Clear All</button>
             </form>
           </div>
 

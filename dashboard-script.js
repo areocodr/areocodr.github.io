@@ -53,6 +53,8 @@ window.addEventListener("resize", function () {
     searchForm.classList.remove("show");
   }
 });
+
+/* 
 const students = [];
 
 function addStudent() {
@@ -117,3 +119,4 @@ function deleteStudent(index) {
 function clearForm() {
   document.getElementById("studentForm").reset();
 }
+ */
