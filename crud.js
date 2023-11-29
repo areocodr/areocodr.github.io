@@ -150,6 +150,7 @@ function addStudents(student) {
   let table = $("#studentTable tbody");
   table.append(`
    <tr id="${student.id}">
+        <td>${student.id}</td>
         <td>${student.firstName}</td>
         <td>${student.surname}</td>
         <td>${student.course}</td>
@@ -159,6 +160,7 @@ function addStudents(student) {
         <td>${student.religion}</td>
         <td>${student.dob}</td>
         <td>${student.state}</td>
+        <td>${student.imagePreview}</td>
         <td>
           <button class="mb-1 btn btn-sm btn-warning editBtn" data-id="${student.id}">Edit</button>
   
@@ -177,6 +179,7 @@ function clearForm() {
   $("#religion").val("");
   $("#dob").val("");
   $("#state").val("");
+  $("#imagePreview").val("");
 }
 
 function generateId() {
@@ -201,6 +204,7 @@ $("#studentForm").submit(function (e) {
     religion: $("#religion").val(),
     state: $("#state").val(),
     dob: $("#dob").val(),
+    imagePreview: $("#imagePreview").val(),
   };
 
   // Validate date of birth
@@ -229,7 +233,7 @@ $("#editForm").submit(function (e) {
   let studentIndex = students.findIndex((student) => student.id == studentId);
   let student = students[studentIndex];
 
-  student.firstName = $("editfirstName").val();
+  student.firstName = $("#editfirstName").val();
   (student.surname = $("#editsurname").val()),
     (student.course = $("#editcourse").val()),
     (student.faculty = $("#editfaculty").val()),
@@ -250,7 +254,7 @@ $("#editForm").submit(function (e) {
   row.find("td:eq(7)").text(student.dob);
   row.find("td:eq(8)").text(student.state);
 
-  $("editModal").modal("hide");
+  $("#editModal").modal("hide");
 });
 
 $(document).on("click", ".editBtn", function () {
@@ -260,7 +264,7 @@ $(document).on("click", ".editBtn", function () {
 
   let student = students[studentIndex];
 
-  $("editfirstName").val(student.firstName);
+  $("#editfirstName").val(student.firstName);
   $("#editsurname").val(student.surname);
   $("#editcourse").val(student.course);
   $("#editfaculty").val(student.faculty);
@@ -271,5 +275,98 @@ $(document).on("click", ".editBtn", function () {
   $("#editdob").val(student.dob);
   $("#editStudentId").val(student.id);
 
-  $("editModal").modal("show");
+  $("#editModal").modal("show");
 });
+
+let canvas = document.querySelector("#canvas");
+let context = canvas.getContext("2d");
+let video = document.querySelector("#video");
+
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+    video.srcObject = stream;
+    video.play();
+  });
+}
+
+document.getElementById("snap").addEventListener("click", () => {
+  context.drawImage(video, 0, 0, 320, 240);
+});
+/* 
+function captureImageBase64() {
+  const canvas = document.getElementById("imageCanvas");
+  return canvas.toDataURL("image/png"); // Get base64-encoded image data
+} */
+
+/* function captureImage() {
+  const video = document.getElementById("webcam");
+  const canvas = document.getElementById("imageCanvas");
+  const context = canvas.getContext("2d");
+
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      video.srcObject = stream;
+
+      document.getElementById("snap").addEventListener("click", () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      }); 
+      
+      */
+
+// Capture a frame from the video stream
+// video.onloadedmetadata = function () {
+
+//   // Stop the video stream
+//   stream.getTracks().forEach((track) => track.stop());
+
+//   // Display the captured image
+//   const imagePreview = document.getElementById("imageCanvas");
+//   imagePreview.style.display = "block";
+// };
+
+let imageData = ""; // Variable to store base64-encoded image data
+
+document.getElementById("snap").addEventListener("click", captureImage);
+document.getElementById("download").addEventListener("click", downloadImage);
+
+function captureImage() {
+  const video = document.getElementById("webcam");
+  const canvas = document.getElementById("imageCanvas");
+  const context = canvas.getContext("2d");
+
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      video.srcObject = stream;
+
+      video.onloadedmetadata = function () {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Save base64-encoded image data
+        imageData = canvas.toDataURL("image/png");
+
+        // Stop the video stream
+        stream.getTracks().forEach((track) => track.stop());
+      };
+    })
+    .catch((error) => {
+      console.error("Error accessing webcam:", error);
+    });
+}
+
+function downloadImage() {
+  if (imageData) {
+    // Create a link element
+    const downloadLink = document.createElement("a");
+    downloadLink.href = imageData;
+    downloadLink.download = "captured_image.png";
+    downloadLink.click();
+  } else {
+    alert("No image captured yet.");
+  }
+}

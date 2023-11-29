@@ -96,7 +96,11 @@
             <option value="Zamfara">Zamfara</option>
           </select>
         </div>
-        <div class=""></div>
+        <div class="">
+          <video id="webcam" width="320" height="240" autoplay></video>
+          <button id="snap" class="btn btn-light">Capture Image</button>
+          <canvas id="canvas" width="320" height="240"></canvas>
+        </div>
 
         <button id="addBtn" class="btn btn-success" type="submit">
           Add Student
@@ -106,25 +110,25 @@
         </button>
       </form>
 
-      <td>
-        <table class="table mt-4 list" id="studentTable">
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Surname</th>
-              <th>Course</th>
-              <th>Faculty</th>
-              <th>Gender</th>
-              <th>Home Address</th>
-              <th>Religion</th>
-              <th>Date of Birth</th>
-              <th>State of Origin</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </td>
+      <table class="table mt-4 list" id="studentTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Course</th>
+            <th>Faculty</th>
+            <th>Gender</th>
+            <th>Home Address</th>
+            <th>Religion</th>
+            <th>Date of Birth</th>
+            <th>State of Origin</th>
+            <th>Profile pic</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <div class="modal fade" id="editModal">
@@ -137,23 +141,33 @@
             <form action="" id="editForm">
               <div class="form-group mb-3">
                 <label for="editfirstName">First Name:</label>
-                <input type="text" id="firstName" required />
+                <input type="text" id="editfirstName" required />
               </div>
               <div class="form-group mb-3">
                 <label for="editsurname">Surname:</label>
-                <input type="text" id="surname" required />
+                <input type="text" id="editsurname" required />
               </div>
               <div class="form-group mb-3">
                 <label for="editcourse">Course:</label>
-                <input type="text" id="course" class="form-control" required />
+                <input
+                  type="text"
+                  id="editcourse"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group mb-3">
                 <label for="editfaculty">Faculty:</label>
-                <input type="text" id="faculty" class="form-control" required />
+                <input
+                  type="text"
+                  id="editfaculty"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group mb-3">
                 <label for="editgender">Gender:</label>
-                <select id="gender" class="form-control" required>
+                <select id="editgender" class="form-control" required>
                   <option value="">--Please specify--</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -162,24 +176,29 @@
               </div>
               <div class="form-group mb-3">
                 <label for="editaddress">Home Address:</label>
-                <input type="text" id="address" class="form-control" required />
+                <input
+                  type="text"
+                  id="editaddress"
+                  class="form-control"
+                  required
+                />
               </div>
               <div class="form-group mb-3">
                 <label for="editreligion">Religion:</label>
                 <input
                   type="text"
-                  id="religion"
+                  id="editreligion"
                   class="form-control"
                   required
                 />
               </div>
               <div class="form-group mb-3">
                 <label for="editdob">Date of Birth:</label>
-                <input type="date" id="dob" class="form-control" required />
+                <input type="date" id="editdob" class="form-control" required />
               </div>
               <div class="form-group mb-3">
                 <label for="editstate">State of Origin:</label>
-                <select id="state" class="form-control" required>
+                <select id="editstate" class="form-control" required>
                   <option value="" disabled selected>Select State</option>
                   <option value="Abia">Abia</option>
                   <option value="Adamawa">Adamawa</option>
@@ -221,7 +240,11 @@
               </div>
 
               <input type="hidden" id="editStudentId" />
-              <button id="editBtn" class="btn btn-success" type="submit">
+              <button
+                id="editBtn"
+                class="btn btn-success editBtn"
+                type="submit"
+              >
                 Save Changes
               </button>
               <button
