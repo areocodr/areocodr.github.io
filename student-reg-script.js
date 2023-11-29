@@ -133,12 +133,14 @@ $(document).on("click", ".editBtn", function () {
   $("#editModal").modal("show");
 });
 
-$(document).on("click", ".deleteBtn", function () {
-  if (confirm("Do you want to delete this record?")) {
-    $("#studentsTable")
-      .find(`[data-id="${student.id}"]`)
-      .closest("tr")
-      .remove();
-  }
-  clearForm();
+$("#deleteBtn").on("click", function () {
+  // Assuming your table has an ID of "studentsTable"
+  // Remove the row from the table
+  $("#studentsTable").find(`[data-id="${student.id}"]`).closest("tr").remove();
+
+  // Remove the student from the array
+  students.splice(studentIndex, 1);
+
+  // Close the modal
+  $("#editModal").modal("hide");
 });
