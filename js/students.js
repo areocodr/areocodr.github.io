@@ -191,3 +191,12 @@ $(document).on("click", ".deleteBtn", function () {
 
   $("#editModal").modal("hide");
 });
+
+// LOGOUT
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+
+  document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  window.location.href = "index.html";
+});
