@@ -99,7 +99,6 @@ function clearForm() {
   $("#religion").val("");
   $("#dob").val("");
   $("#state").val("");
-  $("#imagePreview").val("");
 }
 
 function generateId() {
@@ -162,40 +161,38 @@ $(document).on("click", ".toggleBlacklistBtn", function () {
     .toggleClass("blacklisted", student.isBlacklisted);
 });
 
-$("#clearForm")
-  .$("#editForm")
-  .submit(function (e) {
-    e.preventDefault();
+$("#editForm").submit(function (e) {
+  e.preventDefault();
 
-    let studentId = $("#editStudentId").val();
-    let studentIndex = students.findIndex((student) => student.id == studentId);
-    let student = students[studentIndex];
+  let studentId = $("#editStudentId").val();
+  let studentIndex = students.findIndex((student) => student.id == studentId);
+  let student = students[studentIndex];
 
-    student.id = $("#editStudentId").val();
-    student.firstName = $("#editfirstName").val();
-    (student.surname = $("#editsurname").val()),
-      (student.course = $("#editcourse").val()),
-      (student.faculty = $("#editfaculty").val()),
-      (student.gender = $("#editgender").val()),
-      (student.address = $("#editaddress").val()),
-      (student.religion = $("#editreligion").val()),
-      (student.state = $("#editstate").val()),
-      (student.dob = $("#editdob").val());
+  student.id = $("#editStudentId").val();
+  student.firstName = $("#editfirstName").val();
+  (student.surname = $("#editsurname").val()),
+    (student.course = $("#editcourse").val()),
+    (student.faculty = $("#editfaculty").val()),
+    (student.gender = $("#editgender").val()),
+    (student.address = $("#editaddress").val()),
+    (student.religion = $("#editreligion").val()),
+    (student.state = $("#editstate").val()),
+    (student.dob = $("#editdob").val());
 
-    let row = $(`#${student.id}`);
-    row.find("td:eq(0)").text(student.id);
-    row.find("td:eq(1)").text(student.firstName);
-    row.find("td:eq(2)").text(student.surname);
-    row.find("td:eq(3)").text(student.course);
-    row.find("td:eq(4)").text(student.faculty);
-    row.find("td:eq(5)").text(student.gender);
-    row.find("td:eq(6)").text(student.address);
-    row.find("td:eq(7)").text(student.religion);
-    row.find("td:eq(8)").text(student.dob);
-    row.find("td:eq(9)").text(student.state);
+  let row = $(`#${student.id}`);
+  row.find("td:eq(0)").text(student.id);
+  row.find("td:eq(1)").text(student.firstName);
+  row.find("td:eq(2)").text(student.surname);
+  row.find("td:eq(3)").text(student.course);
+  row.find("td:eq(4)").text(student.faculty);
+  row.find("td:eq(5)").text(student.gender);
+  row.find("td:eq(6)").text(student.address);
+  row.find("td:eq(7)").text(student.religion);
+  row.find("td:eq(8)").text(student.dob);
+  row.find("td:eq(9)").text(student.state);
 
-    $("#editModal").modal("hide");
-  });
+  $("#editModal").modal("hide");
+});
 
 $(document).on("click", ".editBtn", function () {
   let studentId = $(this).data("id");
