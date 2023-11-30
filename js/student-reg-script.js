@@ -1,4 +1,4 @@
-function updateReviewModal() {
+/* function updateReviewModal() {
   const firstName = $("#firstName").val();
   const surname = $("#surname").val();
   const course = $("#course").val();
@@ -35,9 +35,10 @@ $("#confirmBtn").click(function () {
 $("#clearBtn").click(function () {
   clearForm();
 });
-
+ */
+/* 
 $(document).ready(function () {
-  $("#confirmBtn").on("click", function () {
+  $("#addBtn").on("click", function () {
     let formData = {
       id: generateId(),
       firstName: $("#firstName").val(),
@@ -57,13 +58,13 @@ $(document).ready(function () {
     localStorage.setItem("formData", JSON.stringify(storedForms));
   });
 });
-
+ */
 let students = [];
 
 function addStudents(student) {
   let table = $("#studentTable tbody");
   table.append(`
-   <tr id="${student.id} class="${student.isBlacklisted ? "blacklisted" : ""}"">
+   <tr id="${student.id}" class="${student.isBlacklisted ? "blacklisted" : ""}">
         <td>${student.id}</td>
         <td>${student.firstName}</td>
         <td>${student.surname}</td>
@@ -74,7 +75,6 @@ function addStudents(student) {
         <td>${student.religion}</td>
         <td>${student.dob}</td>
         <td>${student.state}</td>
-        <td>${student.imagePreview}</td>
         <td>
           <button class="mb-1 btn btn-sm btn-warning editBtn" data-id="${
             student.id
@@ -162,38 +162,40 @@ $(document).on("click", ".toggleBlacklistBtn", function () {
     .toggleClass("blacklisted", student.isBlacklisted);
 });
 
-$("#editForm").submit(function (e) {
-  e.preventDefault();
+$("#clearForm")
+  .$("#editForm")
+  .submit(function (e) {
+    e.preventDefault();
 
-  let studentId = $("#editStudentId").val();
-  let studentIndex = students.findIndex((student) => student.id == studentId);
-  let student = students[studentIndex];
+    let studentId = $("#editStudentId").val();
+    let studentIndex = students.findIndex((student) => student.id == studentId);
+    let student = students[studentIndex];
 
-  student.id = $("#editStudentId").val();
-  student.firstName = $("#editfirstName").val();
-  (student.surname = $("#editsurname").val()),
-    (student.course = $("#editcourse").val()),
-    (student.faculty = $("#editfaculty").val()),
-    (student.gender = $("#editgender").val()),
-    (student.address = $("#editaddress").val()),
-    (student.religion = $("#editreligion").val()),
-    (student.state = $("#editstate").val()),
-    (student.dob = $("#editdob").val());
+    student.id = $("#editStudentId").val();
+    student.firstName = $("#editfirstName").val();
+    (student.surname = $("#editsurname").val()),
+      (student.course = $("#editcourse").val()),
+      (student.faculty = $("#editfaculty").val()),
+      (student.gender = $("#editgender").val()),
+      (student.address = $("#editaddress").val()),
+      (student.religion = $("#editreligion").val()),
+      (student.state = $("#editstate").val()),
+      (student.dob = $("#editdob").val());
 
-  let row = $(`#${student.id}`);
-  row.find("td:eq(0)").text(student.id);
-  row.find("td:eq(1)").text(student.firstName);
-  row.find("td:eq(2)").text(student.surname);
-  row.find("td:eq(3)").text(student.course);
-  row.find("td:eq(4)").text(student.faculty);
-  row.find("td:eq(5)").text(student.gender);
-  row.find("td:eq(6)").text(student.address);
-  row.find("td:eq(7)").text(student.religion);
-  row.find("td:eq(8)").text(student.dob);
-  row.find("td:eq(9)").text(student.state);
+    let row = $(`#${student.id}`);
+    row.find("td:eq(0)").text(student.id);
+    row.find("td:eq(1)").text(student.firstName);
+    row.find("td:eq(2)").text(student.surname);
+    row.find("td:eq(3)").text(student.course);
+    row.find("td:eq(4)").text(student.faculty);
+    row.find("td:eq(5)").text(student.gender);
+    row.find("td:eq(6)").text(student.address);
+    row.find("td:eq(7)").text(student.religion);
+    row.find("td:eq(8)").text(student.dob);
+    row.find("td:eq(9)").text(student.state);
 
-  $("#editModal").modal("hide");
-});
+    $("#editModal").modal("hide");
+  });
 
 $(document).on("click", ".editBtn", function () {
   let studentId = $(this).data("id");

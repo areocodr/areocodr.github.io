@@ -30,6 +30,83 @@ $(document).ready(function () {
   }
 });
 
+function populateStateOptions() {
+  const states = [
+    "Abia",
+    "Adamawa",
+    "Akwa Ibom",
+    "Anambra",
+    "Bauchi",
+    "Bayelsa",
+    "Benue",
+    "Borno",
+    "Cross River",
+    "Delta",
+    "Ebonyi",
+    "Edo",
+    "Ekiti",
+    "Enugu",
+    "FCT",
+    "Gombe",
+    "Imo",
+    "Jigawa",
+    "Kaduna",
+    "Kano",
+    "Katsina",
+    "Kebbi",
+    "Kogi",
+    "Kwara",
+    "Lagos",
+    "Nasarawa",
+    "Niger",
+    "Ogun",
+    "Ondo",
+    "Osun",
+    "Oyo",
+    "Plateau",
+    "Rivers",
+    "Sokoto",
+    "Taraba",
+    "Yobe",
+    "Zamfara",
+  ];
+
+  const stateSelect = $("#filterState");
+  states.forEach((state) => {
+    stateSelect.append(`<option value="${state}">${state}</option>`);
+  });
+}
+
+$(document).ready(function () {
+  populateStateOptions();
+});
+
+function searchStudents() {
+  let searchInput = $("#searchInput").val().toLowerCase();
+  let filterGender = $("#filterGender").val().toLowerCase();
+  let filterState = $("#filterState").val().toLowerCase();
+  let filterFaculty = $("#filterFaculty").val().toLowerCase();
+  let filterCourse = $("#filterCourse").val().toLowerCase();
+
+  let filteredStudents = students.filter((student) => {
+    let fullName = `${student.firstName} ${student.surname}`.toLowerCase();
+    let gender = student.gender.toLowerCase();
+    let state = student.state.toLowerCase();
+    let faculty = student.faculty.toLowerCase();
+    let course = student.course.toLowerCase();
+
+    return (
+      fullName.includes(searchInput) &&
+      (filterGender === "" || gender === filterGender) &&
+      (filterState === "" || state === filterState) &&
+      (filterFaculty === "" || faculty.includes(filterFaculty)) &&
+      (filterCourse === "" || course.includes(filterCourse))
+    );
+  });
+
+  displayStudents(filteredStudents);
+}
+
 let students = [];
 
 function addStudents(student) {

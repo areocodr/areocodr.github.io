@@ -29,7 +29,7 @@
       </a>
 
       <ul class="side-menu top">
-        <li class="active">
+        <li>
           <a href="dashboard.html">
             <i class="bx bxs-dashboard"></i>
             <span class="text">Dashboard</span>
@@ -41,7 +41,7 @@
             <span class="text">Student Registration</span>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="students.html">
             <i class="bx bxs-group"></i>
             <span class="text">Students</span>
@@ -95,6 +95,21 @@
             </select>
           </div>
 
+          <div class="form-input">
+            <label for="filterState">State:</label>
+            <select id="filterState" class="form-control">
+              <option value="">-- All --</option>
+              </select>
+          </div>
+
+          <div class="form-input">
+            <label for="filterFaculty">Faculty:</label>
+            <input type="text" id="filterFaculty" class="form-control" />
+          </div>
+          <div class="form-input">
+            <label for="filterCourse">Course:</label>
+            <input type="text" id="filterCourse" class="form-control" />
+          </div>
         </form>
         <a href="#" class="notification">
           <i class="bx bxs-bell"></i>
