@@ -59,6 +59,64 @@ $(document).ready(function () {
   });
 });
  */
+
+const allSideMenu = document.querySelectorAll("#sidebar .side-menu.top li a");
+
+allSideMenu.forEach((item) => {
+  const li = item.parentElement;
+
+  item.addEventListener("click", function () {
+    allSideMenu.forEach((i) => {
+      i.parentElement.classList.remove("active");
+    });
+    li.classList.add("active");
+  });
+});
+
+// TOGGLE SIDEBAR
+const menuBar = document.querySelector("#content nav .bx.bx-menu");
+const sidebar = document.getElementById("sidebar");
+
+menuBar.addEventListener("click", function () {
+  sidebar.classList.toggle("hide");
+});
+
+//
+
+const searchButton = document.querySelector(
+  "#content nav form .form-input button"
+);
+const searchButtonIcon = document.querySelector(
+  "#content nav form .form-input button .bx"
+);
+const searchForm = document.querySelector("#content nav form");
+searchButton.addEventListener("click", function (e) {
+  if (window.innerWidth < 576) {
+    e.preventDefault();
+    searchForm.classList.toggle("show");
+    if (searchForm.classList.contains("show")) {
+      searchButtonIcon.classList.replace("bx-search", "bx-x");
+    } else {
+      searchButtonIcon.classList.replace("bx-x", "bx-search");
+    }
+  }
+});
+
+if (window.innerWidth < 768) {
+  sidebar.classList.add("hide");
+} else if (window.innerWidth > 576) {
+  searchButtonIcon.classList.replace("bx-x", "bx-search");
+  searchForm.classList.remove("show");
+}
+
+window.addEventListener("resize", function () {
+  if (this.innerWidth > 576) {
+    searchButtonIcon.classList.replace("bx-x", "bx-search");
+    searchForm.classList.remove("show");
+  }
+});
+
+
 let students = [];
 
 function addStudents(student) {
@@ -123,6 +181,7 @@ $("#studentForm").submit(function (e) {
     religion: $("#religion").val(),
     state: $("#state").val(),
     dob: $("#dob").val(),
+    isBlacklisted: false,
   };
 
   // Validate date of birth
@@ -153,6 +212,7 @@ function isFutureDate(dateString) {
 $(document).on("click", ".toggleBlacklistBtn", function () {
   let studentId = $(this).data("id");
   let studentIndex = students.findIndex((student) => student.id == studentId);
+
   let student = students[studentIndex];
 
   student.isBlacklisted = !student.isBlacklisted;
@@ -198,21 +258,24 @@ $(document).on("click", ".editBtn", function () {
   let studentId = $(this).data("id");
 
   let studentIndex = students.findIndex((student) => student.id == studentId);
+  if (studentIndex !== -1) {
+    let student = students[studentIndex];
 
-  let student = students[studentIndex];
+    $("#editfirstName").val(student.firstName);
+    $("#editsurname").val(student.surname);
+    $("#editcourse").val(student.course);
+    $("#editfaculty").val(student.faculty);
+    $("#editgender").val(student.gender);
+    $("#editaddress").val(student.address);
+    $("#editreligion").val(student.religion);
+    $("#editstate").val(student.state);
+    $("#editdob").val(student.dob);
+    $("#editStudentId").val(student.id);
 
-  $("#editfirstName").val(student.firstName);
-  $("#editsurname").val(student.surname);
-  $("#editcourse").val(student.course);
-  $("#editfaculty").val(student.faculty);
-  $("#editgender").val(student.gender);
-  $("#editaddress").val(student.address);
-  $("#editreligion").val(student.religion);
-  $("#editstate").val(student.state);
-  $("#editdob").val(student.dob);
-  $("#editStudentId").val(student.id);
-
-  $("#editModal").modal("show");
+    $("#editModal").modal("show");
+  } else {
+    console.error("Student not found");
+  }
 });
 
 $(document).on("click", ".deleteBtn", function () {
